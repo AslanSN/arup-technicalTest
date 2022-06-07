@@ -1,18 +1,9 @@
+import data from "../../resources/mockData.json"
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			data: [...data]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
