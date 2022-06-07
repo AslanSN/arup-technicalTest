@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
+			<h1 className="navbar-title">
+				d.Hub field
+			</h1>
 			<Link to="/">
 				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
 			</Link>

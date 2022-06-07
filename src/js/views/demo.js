@@ -11,7 +11,7 @@ export const Demo = () => {
 	return (
 		<div className="container">
 			<ul className="list-group">
-				{store.demo.map((item, index) => {
+				{store.data.map((item, index) => {
 					return (
 						<li
 							key={index}
