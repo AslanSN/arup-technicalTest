@@ -14,8 +14,14 @@ const getState = ({ getStore, getActions, setStore }) => {
        * @param {String} string - Discipline
        * @returns string
        */
-      disciplineShortener: (string) =>
-        string === "Water & Sewer Supply" ? "Water & Sewer" : string,
+      disciplineShortener: (string) => {
+        const disciplineArray = string.split(" ");
+
+        return disciplineArray.length > 3
+          ? `${disciplineArray[0]} ${disciplineArray[1]} ${disciplineArray[2]}`
+          : string;
+      },
+
       /**
        * ! Data Shortener and Converter and Filtering
        * * AslanSN - 22-06-10
