@@ -10,7 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       /**
        * ! Data Shortener
        * * AslanSN - 22-06-10
-       * ? Shortens store.data.discipline === Water & Sewer Supply
+       * ? Shortens disciplines to have 3 or less words
        * @param {String} string - Discipline
        * @returns string
        */
@@ -32,7 +32,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       initialsAndSurnameExtractor: (string) => {
         const actions = getActions();
         const wholeNameArray = string.split(" ");
-
         let firstInitial = "";
         let surname = wholeNameArray[wholeNameArray.length - 1];
         let wholeName = "";
