@@ -10,18 +10,20 @@ const ItemProptypes = {
 const Item = (props) => {
   const { store, actions } = useContext(Context);
   const item = store.data[props.id];
-  console.log(props.id);
+
+  const date = new Date(item.regDate);
+  const europeanDate = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
 
   return (
     <li key={props.id} className="item">
       <ul className="item-ul">
         <li className="item-number">{item.num}</li>
         <li className="item-discipline">{item.discipline}</li>
-        <li className="item-regDate">{item.regDate}</li>
+        <li className="item-regDate">{europeanDate}</li>
         <li className="item-sentTo">{item.sentTo.name}</li>
         <li className="item-subject">{item.subject}</li>
         <li className="item-status">{item.status}</li>
-        <li className="item-critical">{item.critical}</li>
+        <li className="item-critical">{String(item.critical)}</li>
       </ul>
     </li>
   );

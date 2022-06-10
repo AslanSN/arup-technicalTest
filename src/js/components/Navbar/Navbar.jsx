@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import './NavbarStyles.css';
+import "./NavbarStyles.css";
 
 const Navbar = () => {
   return (
@@ -31,29 +31,35 @@ const Navbar = () => {
             </li>
             <li className="nav-item ms-3 me-3 text-red font-weight-bold">
               <Link to="/">
-                <a className="nav-link active" href="#">
+                <Link className="nav-link active" href="#">
                   RFI
-                </a>
+                </Link>
               </Link>
             </li>
             <li className="nav-item ms-3 me-3 text-dark font-weight-bold">
-              <a className="nav-link active" href="#">
+              <Link className="nav-link active" href="#">
                 Submittals
-              </a>
+              </Link>
             </li>
             <li className="nav-item ms-3 me-3 text-dark link-dark font-weight-bold ">
-              <a className="nav-link active" href="#">
+              <Link className="nav-link active" href="#">
                 Issues
-              </a>
+              </Link>
             </li>
           </ul>
-          <img
-            className="d-flex arup-logo"
-            src="../../../resources/Arup_Red_RGB.png"
-            alt="Arup logo"
-            height="24"
-            width="100"
-          />
+          <Link to="www"></Link>
+          <a
+            href="https://www.arup.com/offices/spain"
+            target="_blank"
+            rel="noopener noreferrer">
+            <img
+              className="d-flex arup-logo"
+              src="../../../resources/Arup_Red_RGB.png"
+              alt="Arup logo"
+              height="24"
+              width="100"
+            />
+          </a>
           {/* <form className="d-flex" role="search" data-np-checked="1">
             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" data-np-checked="1"/>
             <button className="btn btn-outline-success" type="submit">Search</button>
