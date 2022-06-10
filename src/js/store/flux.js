@@ -1,4 +1,4 @@
-import data from "../../resources/mockData.json"
+import data from "../../resources/data/mockData.json"
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {

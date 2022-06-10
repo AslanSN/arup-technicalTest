@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import './NavbarStyles.css';
 
-export const Navbar = () => {
+const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg shadow-sm p-3 mb-5 rounded bg-white mybar">
       <div className="container-fluid">
@@ -29,10 +29,12 @@ export const Navbar = () => {
                 Documents
               </a>
             </li>
-            <li className="nav-item ms-3 me-3 text-dark font-weight-bold">
-              <a className="nav-link active" href="#">
-                RFI
-              </a>
+            <li className="nav-item ms-3 me-3 text-red font-weight-bold">
+              <Link to="/">
+                <a className="nav-link active" href="#">
+                  RFI
+                </a>
+              </Link>
             </li>
             <li className="nav-item ms-3 me-3 text-dark font-weight-bold">
               <a className="nav-link active" href="#">
@@ -49,8 +51,8 @@ export const Navbar = () => {
             className="d-flex arup-logo"
             src="../../../resources/Arup_Red_RGB.png"
             alt="Arup logo"
-						height="24"
-						width="100"
+            height="24"
+            width="100"
           />
           {/* <form className="d-flex" role="search" data-np-checked="1">
             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" data-np-checked="1"/>
@@ -61,3 +63,5 @@ export const Navbar = () => {
     </nav>
   );
 };
+
+export default Navbar;
