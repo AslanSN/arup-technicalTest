@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Item from "./Item/Item.jsx";
 import { Context } from "../../store/appContext.js";
+import FilterBar from "./FilterBar/FilterBar.jsx";
 
 const MailList = () => {
   const { store, actions } = useContext(Context);
@@ -9,8 +10,10 @@ const MailList = () => {
 
   return (
     <>
-      <div className="mail-column filter-bar"></div>
-      <ul className="mailList-listing">{store.data.map(itemListing)}</ul>
+			<div className="mail-column filter-bar"></div>
+			<FilterBar/>
+			<ul className="mailList-listing">
+				{store.data.map(itemListing)}</ul>
     </>
   );
 };
