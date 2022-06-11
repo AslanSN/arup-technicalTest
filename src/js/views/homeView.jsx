@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
+import Filters from "../components/FiltersColumn/Filters.jsx";
+import RequestDetails from "../components/RequestDetailsColumn/RequestDetails.jsx";
 // import { Link } from "react-router-dom";
-import MailList from "../components/MailListColumn/MailList.jsx";
+import RequestList from "../components/RequestListColumn/RequestList.jsx";
 
+import "./homeViewStyles.scss";
 // import { Context } from "../store/appContext";
 
 // import "../../styles/demo.css";
@@ -10,8 +13,10 @@ const HomeView = () => {
   // const { store, actions } = useContext(Context);
 
   return (
-    <div className="container">
-      <MailList/>
+    <div className="homeView-container">
+      <Filters/>
+      <RequestList />
+      <RequestDetails />
       {/* <ul className="list-group">
 
 
@@ -32,7 +37,7 @@ const HomeView = () => {
                   </p>
                 ) : null
               } */}
-              {/* <button
+      {/* <button
                 className="btn btn-success"
                 onClick={() => actions.changeColor(index, "orange")}>
                 Change Color

@@ -1,0 +1,15 @@
+.request-bar-container {
+  // width: 80vw;
+  display: grid;
+  grid-template-areas: "info 0 download add";
+	grid-template-columns: 18vw auto 5vw 7vw;
+	& .request-info{
+		grid-area: info;
+	}
+  & .request-download {
+		grid-area: download;
+  }
+	& .request-add-request {
+		grid-area: add;
+	}
+}
