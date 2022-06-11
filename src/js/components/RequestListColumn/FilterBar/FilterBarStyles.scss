@@ -1,4 +1,6 @@
 .filter-list-container{
+	grid-area: list;
+	// width: 50vw;
 	display:grid;
 	grid-template-columns: 4rem 10rem 6rem 7rem auto 6rem 4rem;
 	column-gap: 1rem;

@@ -23,36 +23,36 @@ const RequestDetailsProptypes = {
  */
 const RequestDetails = (props) => {
   const { store, actions } = useContext(Context);
-
-  const request = store.data[props.id || 0];
+  console.log("Request Details is being called")
+  const request = store.data[props.id];
   // const message = store.data[0].message;
 
   return (
     <div className="request-details-column">
-      <card className="card">
+      <div className="card">
         <div className="header-container">
           <h5 className="discipline">{request.discipline}</h5>
           <h3 className="title">{request.subject}</h3>
-          <subtitle className="subtitle" role="doc-subtitle">
+          <div className="subtitle" role="doc-subtitle">
             Sent to: Anything
-          </subtitle>
+          </div>
           <p className="importance-container">
             <span className="status">closed</span>
             <span className="critical">true</span>
           </p>
         </div>
         <hr />
-        <core className="email-core-container">
+        <div className="email-core-container">
           <h6>Request</h6>
           <p className="name-date">
             <span className="name">N.Surname</span>
             <span className="date">00.00.0000</span>
           </p>
           <p className="core-text">{request.message}</p>
-        </core>
+        </div>
         <hr />
         <button className="btn btn-danger answer-button">Answer request</button>
-      </card>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 .request-bar-container {
   // width: 80vw;
+	grid-area: requestBar;
   display: grid;
   grid-template-areas: "info 0 download add";
 	grid-template-columns: 18vw auto 5vw 7vw;

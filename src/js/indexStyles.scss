@@ -2,8 +2,10 @@
 $background-color: #f7f7f8;
 $item-color: #fff;
 body {
+  // overflow: hidden;
   background-color: $background-color;
   & ul {
     list-style: none;
+    padding: 0 0 0 0;
   }
 }

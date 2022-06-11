@@ -8,6 +8,20 @@ const getState = ({ getStore, getActions, setStore }) => {
     actions: {
       //! -- DATA CONVERTERS -- //
       /**
+       * ! Formatter
+       * * AslanSN - 22-06-07
+       * @param {object} object - Date
+       * @returns European date format
+       */
+      europeanDateFormatter: (object) =>
+        object.getDate() +
+        "." +
+        (object.getMonth() + 1 < 10
+          ? "0" + (object.getMonth() + 1)
+          : object.getMonth() + 1) +
+        "." +
+        object.getFullYear(),
+      /**
        * ! Data Shortener
        * * AslanSN - 22-06-10
        * ? Shortens disciplines to have 3 or less words
@@ -81,6 +95,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
+      
       loadSomeData: () => {
         /**
 					fetch().then().then(data => setStore({ "foo": data.bar }))

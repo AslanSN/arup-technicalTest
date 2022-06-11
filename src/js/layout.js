@@ -6,6 +6,7 @@ import HomeView from "./views/homeView.jsx";
 import injectContext from "./store/appContext";
 
 import Navbar from "./components/Navbar/Navbar.jsx";
+import RequestBar from "./components/RequestBar/RequestBar.jsx";
 
 //create your first component
 const Layout = () => {
@@ -18,6 +19,7 @@ const Layout = () => {
       <BrowserRouter basename={basename}>
         <ScrollToTop>
           <Navbar />
+          <RequestBar />
           <Switch>
             <Route exact path="/">
               <HomeView />
