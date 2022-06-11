@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import RequestItem from "./RequestItem/RequestItem.jsx";
+import RequestItem from "./Item/Item.jsx";
 import { Context } from "../../store/appContext.js";
 import FilterBar from "./FilterBar/FilterBar.jsx";
 import RequestBar from "../RequestBar/RequestBar.jsx";

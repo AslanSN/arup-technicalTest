@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../../../store/appContext";
 import PropTypes from "prop-types";
 
-import "./RequestItemStyles.scss";
+import "./ItemStyles.scss";
 import RequestDetails from "../../RequestDetailsColumn/RequestDetails.jsx";
 const ItemProptypes = {
   id: PropTypes.number.isRequired,
