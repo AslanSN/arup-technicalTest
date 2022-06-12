@@ -1,4 +1,6 @@
+import { useState } from "react";
 import data from "../../resources/data/mockData.json";
+import { filters } from "./functions/filters";
 
 const getState = ({ getStore, getActions, setStore }) => {
   return {
@@ -8,9 +10,19 @@ const getState = ({ getStore, getActions, setStore }) => {
         selected: false,
         dataDetails: {},
       },
+      families: [
+        "Num.",
+        "Discipline",
+        "Reg. Date",
+        "Sent to",
+        "Subject",
+        "Status",
+        "Critical",
+        "Message",
+      ],
     },
     actions: {
-      //! -- DATA MANIPULATERS -- //
+      //! -- DATA MANIPULATORS -- //
       /**
        * ! Formatter
        * * AslanSN - 22-06-07
@@ -39,11 +51,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           ? `${disciplineArray[0]} ${disciplineArray[1]} ${disciplineArray[2]}`
           : string;
       },
-
       /**
        * ! Data Shortener, Converter and Filtering
        * * AslanSN - 22-06-10
        * ? Using titleExtractor() Shortens efficiently the name received
+       * TODO: discerning between middle names, surnames and subtitles
        * @param {string} string
        * @returns {string} string
        */
@@ -98,55 +110,84 @@ const getState = ({ getStore, getActions, setStore }) => {
             return string.substring(0, 1).toUpperCase() + ".";
         }
       },
+      //! SORTERS //
+      /**
+       * ! Sorter - Reverse
+       * * AslanSN - 22-06-12
+       * ? Inverts the order of the Data
+       * @param {object} store
+       * @returns Reversed data
+       */
       sortByNumber: () => {
         const store = getStore();
         const reversedData = store.data.reverse();
         setStore({ data: reversedData });
       },
-      // changeShowState: (event, id) => {},
+      //! FILTERS //
+      /**
+       * !Retriever
+       * * AslanSN - 22-06-12
+       * TODO: Review --- NOT WORKED
+       * @returns
+       */
+      // familyRetriever: () => {
+      //   const store = getStore();
+      //   const item = store.data[0];
+      //   const families = Object.keys(item);
+      //   return families;
+      // },
+      // filtersTitles: () => {
+      //   const actions = getActions();
+      //   const keys = actions.familyRetriever();
+      //   // const keys = Object.keys(rawFamilies);
+
+      //   let families = keys.map((value) => value.trim().split(/(?=[A-Z])/));
+
+      //   let composedFamily = families.filter((value) => value.length > 1);
+      //   let regDate = composedFamily[0];
+      //   let sentTo = composedFamily[1];
+      //   const arrayStringFormating = (value) =>
+      //     value[0].toUpperCase() + value.slice(1);
+
+      //   let lonelies = families.filter((value) => value.length === 1);
+      //   lonelies = lonelies.flat();
+      //   lonelies = lonelies.map(arrayStringFormating);
+      //   families = lonelies;
+
+      //   regDate = regDate.map(arrayStringFormating);
+      //   regDate = regDate.join(". ");
+      //   sentTo = sentTo.map(arrayStringFormating);
+      //   sentTo = sentTo.join(" ");
+      //   families.splice(2, 0, regDate, sentTo);
+
+      //   setStore({families: families})
+      // },
+
       // ! -- HOOKS -- //
       hooks: {
+        /**
+         * ! HOOK - Collapsible
+         * * AslanSN - 22-06-12
+         * TODO: FIXING
+         * @param {number} id
+         */
         useCollapsible: (id) => {
           const store = getStore();
           const numId = store.details.dataDetails.num;
           const newData = store.data[id];
           let selected = store.details.selected;
 
-          // console.log(store.details.selected, id, numId, newData);
-          // const
-          // if (numId !== id) {
-          // }
+          //TODO - FIX : data reversed ? numId !== id ALWAYS - Change method
           setStore({
             details: {
               selected: numId !== id ? (selected = true) : !selected,
               dataDetails: newData,
             },
           });
+          //TODO - FIX: Window.scrollTo doesn't always work.
           store.details.selected ? window.scrollTo(1000, 150) : null;
-
-          // return store.details.selected ? ":active" : "";
-          // console.log(store.details.selected, id, store.details.dataDetails);
         },
       },
-      // loadSomeData: () => {
-      //   /**
-      // 		fetch().then().then(data => setStore({ "foo": data.bar }))
-      // 	*/
-      // },
-      // changeColor: (index, color) => {
-      //   //get the store
-      //   const store = getStore();
-
-      //   //we have to loop the entire demo array to look for the respective index
-      //   //and change its color
-      //   const demo = store.demo.map((elm, i) => {
-      //     if (i === index) elm.background = color;
-      //     return elm;
-      //   });
-
-      //   //reset the global store
-      //   setStore({ demo: demo });
-      // },
     },
   };
 };

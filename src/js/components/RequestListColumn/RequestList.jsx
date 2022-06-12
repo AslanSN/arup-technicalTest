@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import RequestItem from "./Item/Item.jsx";
 import { Context } from "../../store/appContext.js";
 import FilterBar from "./FilterBar/FilterBar.jsx";
-import RequestBar from "../RequestBar/RequestBar.jsx";
 
 import "./RequestListStyles.scss";
 import RequestDetails from "../RequestDetailsColumn/RequestDetails.jsx";
@@ -11,8 +10,7 @@ const RequestList = () => {
   const { store, actions } = useContext(Context);
 
   const itemListing = (value, id) => <RequestItem id={id} />;
-
-  // actions.hooks.useCollapsible();
+  // sortByNumber();
 
   return (
     <div className="request-list-column">

@@ -5,8 +5,8 @@ import ScrollToTop from "./components/scrollToTop";
 import HomeView from "./views/homeView.jsx";
 import injectContext from "./store/appContext";
 
-import Navbar from "./components/Navbar/Navbar.jsx";
-import RequestBar from "./components/RequestBar/RequestBar.jsx";
+import Navbar from "./components/StaticComponents/Navbar/Navbar.jsx";
+import RequestBar from "./components/StaticComponents/RequestBar/RequestBar.jsx";
 
 //create your first component
 const Layout = () => {

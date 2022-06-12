@@ -7,6 +7,7 @@ const { store, actions } = useContext(Context);
   return (
     <ul className="filter-list-container">
       <li className="filter-list-item ">
+        {/*// TODO: Add arrow */}
         <button
           className="btn filter-list-button"
           onClick={actions.sortByNumber}>

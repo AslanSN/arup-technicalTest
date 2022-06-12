@@ -1,6 +1,5 @@
 import React from "react";
 import Filters from "../components/FiltersColumn/Filters.jsx";
-import RequestBar from "../components/RequestBar/RequestBar.jsx";
 import RequestList from "../components/RequestListColumn/RequestList.jsx";
 
 import "./homeViewStyles.scss";
