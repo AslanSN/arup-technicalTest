@@ -10,7 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
     },
     actions: {
-      //! -- DATA CONVERTERS -- //
+      //! -- DATA MANIPULATERS -- //
       /**
        * ! Formatter
        * * AslanSN - 22-06-07
@@ -41,7 +41,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       /**
-       * ! Data Shortener and Converter and Filtering
+       * ! Data Shortener, Converter and Filtering
        * * AslanSN - 22-06-10
        * ? Using titleExtractor() Shortens efficiently the name received
        * @param {string} string
@@ -98,6 +98,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             return string.substring(0, 1).toUpperCase() + ".";
         }
       },
+      sortByNumber: () => {
+        const store = getStore();
+        const reversedData = store.data.reverse();
+        setStore({ data: reversedData });
+      },
       // changeShowState: (event, id) => {},
       // ! -- HOOKS -- //
       hooks: {
@@ -108,16 +113,18 @@ const getState = ({ getStore, getActions, setStore }) => {
           let selected = store.details.selected;
 
           // console.log(store.details.selected, id, numId, newData);
-          if (numId !== id) {
-          }
+          // const
+          // if (numId !== id) {
+          // }
           setStore({
             details: {
               selected: numId !== id ? (selected = true) : !selected,
               dataDetails: newData,
             },
           });
+          store.details.selected ? window.scrollTo(1000, 150) : null;
 
-
+          // return store.details.selected ? ":active" : "";
           // console.log(store.details.selected, id, store.details.dataDetails);
         },
       },

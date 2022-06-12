@@ -16,7 +16,6 @@ const RequestList = () => {
 
   return (
     <div className="request-list-column">
-      {/* <div className="request-column filter-bar"></div> */}
       <div className="requests-container">
         <div className="request-list-and-filter">
           <FilterBar />
