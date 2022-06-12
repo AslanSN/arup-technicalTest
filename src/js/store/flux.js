@@ -4,6 +4,10 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       data: data,
+      details: {
+        selected: false,
+        dataDetails: {},
+      },
     },
     actions: {
       //! -- DATA CONVERTERS -- //
@@ -94,27 +98,48 @@ const getState = ({ getStore, getActions, setStore }) => {
             return string.substring(0, 1).toUpperCase() + ".";
         }
       },
+      // changeShowState: (event, id) => {},
+      // ! -- HOOKS -- //
+      hooks: {
+        useCollapsible: (id) => {
+          const store = getStore();
+          const numId = store.details.dataDetails.num;
+          const newData = store.data[id];
+          let selected = store.details.selected;
 
-      
-      loadSomeData: () => {
-        /**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+          // console.log(store.details.selected, id, numId, newData);
+          if (numId !== id) {
+          }
+          setStore({
+            details: {
+              selected: numId !== id ? (selected = true) : !selected,
+              dataDetails: newData,
+            },
+          });
+
+
+          // console.log(store.details.selected, id, store.details.dataDetails);
+        },
       },
-      changeColor: (index, color) => {
-        //get the store
-        const store = getStore();
+      // loadSomeData: () => {
+      //   /**
+      // 		fetch().then().then(data => setStore({ "foo": data.bar }))
+      // 	*/
+      // },
+      // changeColor: (index, color) => {
+      //   //get the store
+      //   const store = getStore();
 
-        //we have to loop the entire demo array to look for the respective index
-        //and change its color
-        const demo = store.demo.map((elm, i) => {
-          if (i === index) elm.background = color;
-          return elm;
-        });
+      //   //we have to loop the entire demo array to look for the respective index
+      //   //and change its color
+      //   const demo = store.demo.map((elm, i) => {
+      //     if (i === index) elm.background = color;
+      //     return elm;
+      //   });
 
-        //reset the global store
-        setStore({ demo: demo });
-      },
+      //   //reset the global store
+      //   setStore({ demo: demo });
+      // },
     },
   };
 };

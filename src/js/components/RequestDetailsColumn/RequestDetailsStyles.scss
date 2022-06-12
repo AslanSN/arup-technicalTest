@@ -1,7 +1,10 @@
 .request-details-column {
   width: 25vw;
   grid-area: details;
-
+  transition: width;
+  &:active{
+    // width: 25vw;
+  }
   & .card {
     margin: auto 2rem auto 2rem;
     top: 5vh;

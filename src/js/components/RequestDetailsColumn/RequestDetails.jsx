@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import "./RequestDetailsStyles.scss";
 
 const RequestDetailsProptypes = {
-  id: PropTypes.number.isRequired,
+  object: PropTypes.object.isRequired,
 };
 /**
  * ! Component - Column & Card
@@ -17,22 +17,22 @@ const RequestDetailsProptypes = {
  * ? seems to be excesive for the kind of coding I'm using (always using the father
  * ? block to write inside of it.
  *
- * @param {number} props.id
- * @param {object} store
+ * @param {object} store.details
  * @returns
  */
 const RequestDetails = (props) => {
+
   const { store, actions } = useContext(Context);
-  console.log("Request Details is being called")
-  const request = store.data[props.id];
+  console.log("Request Details is being called", props)
+  const request = store.details.dataDetails;
   // const message = store.data[0].message;
 
   return (
     <div className="request-details-column">
       <div className="card">
         <div className="header-container">
-          <h5 className="discipline">{request.discipline}</h5>
-          <h3 className="title">{request.subject}</h3>
+          <h5 className="discipline">{request.discipline || "N/A"}</h5>
+          <h3 className="title">{ request.subject || "N/A"}</h3>
           <div className="subtitle" role="doc-subtitle">
             Sent to: Anything
           </div>
@@ -48,7 +48,7 @@ const RequestDetails = (props) => {
             <span className="name">N.Surname</span>
             <span className="date">00.00.0000</span>
           </p>
-          <p className="core-text">{request.message}</p>
+          <p className="core-text">{request.message || "N/A"}</p>
         </div>
         <hr />
         <button className="btn btn-danger answer-button">Answer request</button>

@@ -5,11 +5,14 @@ import FilterBar from "./FilterBar/FilterBar.jsx";
 import RequestBar from "../RequestBar/RequestBar.jsx";
 
 import "./RequestListStyles.scss";
+import RequestDetails from "../RequestDetailsColumn/RequestDetails.jsx";
 
 const RequestList = () => {
-  const { store } = useContext(Context);
+  const { store, actions } = useContext(Context);
 
   const itemListing = (value, id) => <RequestItem id={id} />;
+
+  // actions.hooks.useCollapsible();
 
   return (
     <div className="request-list-column">
@@ -22,6 +25,7 @@ const RequestList = () => {
           </ul>
         </div>
       </div>
+      {store.details.selected && <RequestDetails />}
     </div>
   );
 };

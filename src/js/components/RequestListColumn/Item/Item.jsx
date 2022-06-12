@@ -16,7 +16,6 @@ const ItemProptypes = {
  */
 const RequestItem = (props) => {
   const { store, actions } = useContext(Context);
-  const [isShown, setIsShown] = useState(false);
 
   const item = store.data[props.id];
   const date = new Date(item.regDate);
@@ -27,16 +26,19 @@ const RequestItem = (props) => {
     item.sentTo.name
   );
 
-  const openPreview = (id) => {
-    console.log(" On click is working: ", id);
-    return <RequestDetails id={id} />;
-  };
+  // const openPreview = (id) => {
+  //   console.log(" On click is working: ", id);
+  //   return <RequestDetails id={id} />;
+  // };
 
-  const changeShowState= (event) => setIsShown((current) => !current);
+  // const changeShowState = (event, id) => {
+  //   setStore({ "isShown": (current) => !current })
+  //   setStore({"selected": store.data[id]})
+  // };
 
   return (
     <>
-      <li key={props.id} className="item-value" onClick={changeShowState}>
+      <li key={props.id} className="item-value" onClick={(ev, id) => actions.hooks.useCollapsible(props.id)}>
         <ul className="item-ul">
           <li className="item-number">{item.num + 1}</li>
           <li className="item-discipline">{shortenedDiscipline}</li>
@@ -47,7 +49,6 @@ const RequestItem = (props) => {
           <li className="item-critical">{String(item.critical)}</li>
         </ul>
       </li>
-      {isShown && openPreview(props.id)}
     </>
   );
 };
