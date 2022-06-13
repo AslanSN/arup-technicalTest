@@ -11,15 +11,20 @@ import "./FiltersStyles.scss";
 const Filters = () => {
   const { store } = useContext(Context);
   const filterCardListing = (value, id) =>
-    value !== "Num." && value !== "Message" && value !== "Sent to" ? (
-      <FilterCard id={id} />
+    value !== "Num." &&
+    value !== "Message" &&
+    value !== "Sent to" &&
+    value !== "Reg. Date" &&
+    value !== "Subject" ? (
+      <FilterCard id={id} value={value} />
     ) : null;
 
   return (
     <div className="filters-column">
       <subtitle>Filters</subtitle>
-      <hr />
-      <div className="disciplines">{Object.keys(store.families).map(filterCardListing)}</div>
+      <div className="disciplines">
+        {Object.keys(store.families).map(filterCardListing)}
+      </div>
     </div>
   );
 };

@@ -43,10 +43,10 @@ const getState = ({ getStore, getActions, setStore }) => {
           actions = getActions(),
           data = store.data,
           catchers = actions.catchers,
-          disciplines = catchers.disciplinesCatcher(data),
-          subjects = catchers.subjectCatcher(data),
-          status = catchers.statusCatcher(data),
-          criticals = catchers.criticalCatcher(data);
+          disciplines = actions.objectSorter(catchers.disciplinesCatcher(data)),
+          subjects = actions.objectSorter(catchers.subjectCatcher(data)),
+          status = actions.objectSorter(catchers.statusCatcher(data)),
+          criticals = actions.objectSorter(catchers.criticalCatcher(data));
 
         setStore({
           families: {
@@ -57,6 +57,23 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
         });
       },
+      /**
+       * !Sorter
+       * * AslanSN 22-06-13
+       * ? Sorts object by his keys
+       * @param {object} obj
+       * @returns {object} - sorted
+       */
+      objectSorter: (obj) => {
+        const sorted = Object.keys(obj)
+          .sort()
+          .reduce((accumulator, key) => {
+            accumulator[key] = obj[key];
+
+            return accumulator;
+          }, {});
+        return sorted
+      },
       catchers: {
         disciplinesCatcher: (array) => {
           let discipline = {};
@@ -65,6 +82,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             if (discipline[disciplines] === discipline[disciplines])
               discipline[disciplines] = discipline[disciplines] + 1 || 1;
           });
+
           return discipline;
         },
         regDateCatcher: (array) => {

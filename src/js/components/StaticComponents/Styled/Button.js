@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Tokens } from "../../../Tokens";
+import { Tokens } from "../../../../resources/Tokens";
 
 export const Button = styled.button`
   background: transparent;

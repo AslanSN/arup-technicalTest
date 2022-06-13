@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Tokens } from "../../../Tokens";
+import { Tokens } from "../../../../resources/Tokens.js";
 
 export const FilterCard = styled.div`
 	background: transparent;

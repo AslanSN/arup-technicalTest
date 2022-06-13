@@ -6,6 +6,7 @@ import SpecificFilter from "./SpecificFilter/SpecificFilter.jsx";
 import "./FilterCardStyles.scss";
 const FilterCardPropTypes = {
   id: PropTypes.string,
+  value: PropTypes.object,
 };
 /**
  * ! Component - Filter Card container
@@ -15,19 +16,18 @@ const FilterCardPropTypes = {
  */
 const FilterCard = (props) => {
   const { store, actions } = useContext(Context);
-  const familyName = Object.keys(store.families)[props.id];
+ 
+  const familyName = props.value;
 
-  const specificFilterListener = (value, id) => {
-    return <SpecificFilter value={value} id={id} />;
-  };
-
+  const specificFilterListener = (object, id) => (
+    <SpecificFilter value={object} id={id} />
+  );
   return (
     <div className="filter-card-container">
-      <h3>{Object.keys(store.families)[props.id]}</h3>
-      <SpecificFilter />
-      {/* {Object.values(store.families)[props.id].map(SpecificFilterListener)} */}
-      {/* {console.log(store.families[props.id])}
-      {console.log(store.families)} */}
+      <hr />
+      <h3>{familyName}</h3>
+
+      {Object.entries(store.families[familyName]).map(specificFilterListener)}
     </div>
   );
 };
