@@ -1,6 +1,4 @@
-import { useState } from "react";
-import data from "../../resources/data/mockData.json";
-import { filters } from "./functions/filters";
+import data from "./data/mockData.json";
 
 const getState = ({ getStore, getActions, setStore }) => {
   return {
@@ -10,19 +8,104 @@ const getState = ({ getStore, getActions, setStore }) => {
         selected: false,
         dataDetails: {},
       },
-      families: [
-        "Num.",
-        "Discipline",
-        "Reg. Date",
-        "Sent to",
-        "Subject",
-        "Status",
-        "Critical",
-        "Message",
-      ],
+      families: {
+        "Num.": {},
+        Discipline: {},
+        "Reg. Date": {},
+        "Sent to": {},
+        Subject: {},
+        Status: {},
+        Critical: {},
+        Message: {},
+      },
     },
     actions: {
       //! -- DATA MANIPULATORS -- //
+      /**
+       * ! Reverser
+       * * AslanSN - 22-06-13
+       * ? Reads the data and sets it in reverse
+       * @param {json} data
+       * @return Reversed data.json
+       */
+      handleData: () => {
+        let json = require("./data/mockData.json");
+        setStore({ data: json.reverse() });
+      },
+      /**
+       * ! Father catcher & Setter
+       * * AslanSN - 22-06-13
+       * ? Searchs for types of info calling catchers
+       *
+       */
+      familiesValuesRepetitions: () => {
+        const store = getStore(),
+          actions = getActions(),
+          data = store.data,
+          catchers = actions.catchers,
+          disciplines = catchers.disciplinesCatcher(data),
+          subjects = catchers.subjectCatcher(data),
+          status = catchers.statusCatcher(data),
+          criticals = catchers.criticalCatcher(data);
+
+        setStore({
+          families: {
+            Discipline: disciplines,
+            Subject: subjects,
+            Status: status,
+            Critical: criticals,
+          },
+        });
+      },
+      catchers: {
+        disciplinesCatcher: (array) => {
+          let discipline = {};
+          array.forEach((object) => {
+            const disciplines = object.discipline;
+            if (discipline[disciplines] === discipline[disciplines])
+              discipline[disciplines] = discipline[disciplines] + 1 || 1;
+          });
+          return discipline;
+        },
+        regDateCatcher: (array) => {
+          // const store = getStore();
+          let regDate = {};
+          array.forEach((object) => {
+            const regDates = object.regDate;
+            if (regDate[regDates] === regDate[regDates])
+              regDate[regDates] = regDate[regDates] + 1 || 1;
+          });
+          return regDate;
+        },
+        subjectCatcher: (array) => {
+          let subject = {};
+          array.forEach((object) => {
+            const subjects = object.subject;
+            if (subject[subjects] === subject[subjects])
+              subject[subjects] = subject[subjects] + 1 || 1;
+          });
+          return subject;
+        },
+        statusCatcher: (array) => {
+          let status = {};
+          array.forEach((object) => {
+            const statuses = object.status;
+            if (status[statuses] === status[statuses])
+              status[statuses] = status[statuses] + 1 || 1;
+          });
+          return status;
+        },
+        criticalCatcher: (array) => {
+          let critical = {};
+          array.forEach((object) => {
+            const criticals = object.critical;
+            if (critical[criticals] === critical[criticals])
+              critical[criticals] = critical[criticals] + 1 || 1;
+          });
+          return critical;
+        },
+      },
+      dataReverser: () => setStore({ data: data.reverse() }),
       /**
        * ! Formatter
        * * AslanSN - 22-06-07
@@ -120,14 +203,14 @@ const getState = ({ getStore, getActions, setStore }) => {
        */
       sortByNumber: () => {
         const store = getStore();
-        const reversedData = store.data.reverse();
-        setStore({ data: reversedData });
+
+        setStore({ data: store.data.reverse() });
       },
       //! FILTERS //
       /**
-       * !Retriever
+       * ! Retriever - Families
        * * AslanSN - 22-06-12
-       * TODO: Review --- NOT WORKED
+       * TODO: Review --- Must use as BackEnd --
        * @returns
        */
       // familyRetriever: () => {
@@ -163,6 +246,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       //   setStore({families: families})
       // },
 
+      familyUniqueValues: () => {
+        const store = getStore();
+      },
       // ! -- HOOKS -- //
       hooks: {
         /**
@@ -180,7 +266,16 @@ const getState = ({ getStore, getActions, setStore }) => {
           //TODO - FIX : data reversed ? numId !== id ALWAYS - Change method
           setStore({
             details: {
-              selected: numId !== id ? (selected = true) : !selected,
+              selected:
+                store.data[0].num === 99
+                  ? store.data.length - 1 - numId !== id
+                    ? (selected = true)
+                    : !selected
+                  : store.data[0].num === 0
+                  ? numId !== id
+                    ? (selected = true)
+                    : !selected
+                  : null,
               dataDetails: newData,
             },
           });

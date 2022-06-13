@@ -6,6 +6,7 @@ const FilterBar = () => {
 const { store, actions } = useContext(Context);
   return (
     <ul className="filter-list-container">
+      <li/>
       <li className="filter-list-item ">
         {/*// TODO: Add arrow */}
         <button

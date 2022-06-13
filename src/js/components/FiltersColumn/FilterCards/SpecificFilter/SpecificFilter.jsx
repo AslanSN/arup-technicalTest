@@ -1,21 +1,28 @@
 import React from 'react';
-import {Tokens} from '../../../../Tokens.js'
+import PropTypes from "prop-types";
+
+import { Tokens } from '../../../../Tokens.js'
 import { FilterCheckbox } from '../../StyledFilterColumnComponents/FilterCheckbox';
 import { FilterLabel } from '../../StyledFilterColumnComponents/FilterLabelStyled';
 
 import "./SpecificFilterStyles.scss"
+
+const SpecificFilterPropTypes = {
+  value: PropTypes.string,
+  id: PropTypes.string
+}
 /**
  * !Component - Specific Filter
  * * AslanSN - 22-06-12
  * @returns React Component
  */
-const SpecificFilter = () => {
+const SpecificFilter = (props) => {
 	return (
     <>
-      <div className="wrapper">
+      <div className="wrapper" key={props.id}>
 				<FilterCheckbox type="checkbox" />
         <FilterLabel color={Tokens.Colors.text.disabled} font-weight="bold">
-          Something
+          {props.value || "Something"}
         </FilterLabel>
       </div>
       <div className="counters">
@@ -27,5 +34,7 @@ const SpecificFilter = () => {
     </>
   );
 }
+
+SpecificFilter.PropTypes = SpecificFilterPropTypes;
 
 export default SpecificFilter;

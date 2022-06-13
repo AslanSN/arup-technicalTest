@@ -10,13 +10,16 @@ import "./FiltersStyles.scss";
  */
 const Filters = () => {
   const { store } = useContext(Context);
-  const filterCardListing = (id) => <FilterCard key={id} />;
-  // actions.filtersTitles();
+  const filterCardListing = (value, id) =>
+    value !== "Num." && value !== "Message" && value !== "Sent to" ? (
+      <FilterCard id={id} />
+    ) : null;
+
   return (
     <div className="filters-column">
       <subtitle>Filters</subtitle>
       <hr />
-      <div className="disciplines">{store.families.map(filterCardListing)}</div>
+      <div className="disciplines">{Object.keys(store.families).map(filterCardListing)}</div>
     </div>
   );
 };
