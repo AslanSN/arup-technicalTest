@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import RequestItem from "./Item/Item.jsx";
 import { Context } from "../../store/appContext.js";
 import FilterBar from "./FilterBar/FilterBar.jsx";
@@ -7,10 +7,12 @@ import "./RequestListStyles.scss";
 import RequestDetails from "../RequestDetailsColumn/RequestDetails.jsx";
 
 const RequestList = () => {
-  const { store, actions } = useContext(Context);
-
+  const { store } = useContext(Context);
+  // useEffect(() => {
+  //   let counter = 0;
+  //   counter > 0 ? (RequestList(), counter++, console.log(counter)) : null;
+  // }, [store.data]);
   const itemListing = (value, id) => <RequestItem id={id} />;
-  // sortByNumber();
 
   return (
     <div className="request-list-column">

@@ -18,6 +18,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         Critical: {},
         Message: {},
       },
+      checked: false,
     },
     actions: {
       //! -- DATA MANIPULATORS -- //
@@ -58,22 +59,11 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
       },
       /**
-       * !Sorter
+       * !CATCHERS
        * * AslanSN 22-06-13
-       * ? Sorts object by his keys
-       * @param {object} obj
-       * @returns {object} - sorted
+       * Functions to catch the distinct elements
+       * and the number of repetitions
        */
-      objectSorter: (obj) => {
-        const sorted = Object.keys(obj)
-          .sort()
-          .reduce((accumulator, key) => {
-            accumulator[key] = obj[key];
-
-            return accumulator;
-          }, {});
-        return sorted
-      },
       catchers: {
         disciplinesCatcher: (array) => {
           let discipline = {};
@@ -123,7 +113,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           return critical;
         },
       },
-      dataReverser: () => setStore({ data: data.reverse() }),
       /**
        * ! Formatter
        * * AslanSN - 22-06-07
@@ -224,48 +213,83 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         setStore({ data: store.data.reverse() });
       },
-      //! FILTERS //
       /**
-       * ! Retriever - Families
-       * * AslanSN - 22-06-12
-       * TODO: Review --- Must use as BackEnd --
-       * @returns
+       * !Sorter
+       * * AslanSN 22-06-13
+       * ? Sorts object by his keys
+       * @param {object} obj
+       * @returns {object} - sorted
        */
-      // familyRetriever: () => {
-      //   const store = getStore();
-      //   const item = store.data[0];
-      //   const families = Object.keys(item);
-      //   return families;
-      // },
-      // filtersTitles: () => {
-      //   const actions = getActions();
-      //   const keys = actions.familyRetriever();
-      //   // const keys = Object.keys(rawFamilies);
+      objectSorter: (obj) => {
+        const sorted = Object.keys(obj)
+          .sort()
+          .reduce((accumulator, key) => {
+            accumulator[key] = obj[key];
 
-      //   let families = keys.map((value) => value.trim().split(/(?=[A-Z])/));
+            return accumulator;
+          }, {});
+        return sorted;
+      },
 
-      //   let composedFamily = families.filter((value) => value.length > 1);
-      //   let regDate = composedFamily[0];
-      //   let sentTo = composedFamily[1];
-      //   const arrayStringFormating = (value) =>
-      //     value[0].toUpperCase() + value.slice(1);
+      //! FILTERS //
+      familiesConverter: (string) => {
+        switch (string) {
+          case "Num.":
+            return "num";
+            break;
+          case "Discipline":
+            return "discipline";
+            break;
+          case "Reg. Date":
+            return "regDate";
+            break;
+          case "Sent to":
+            return "sentTo";
+            break;
+          case "Subject":
+            return "subject";
+            break;
+          case "Status":
+            return "status";
+            break;
+          case "Critical":
+            return "critical";
+            break;
+          case "Message":
+            return "message";
+            break;
+          default:
+            string;
+        }
+      },
+      usefilterByCheckbox: (family, key) => {
+        const actions = getActions(),
+          store = getStore(),
+          formatedFamily = actions.familiesConverter(family)
+        let checking = store.checked;
+        console.log(checking);
+        console.log(formatedFamily, key);
 
-      //   let lonelies = families.filter((value) => value.length === 1);
-      //   lonelies = lonelies.flat();
-      //   lonelies = lonelies.map(arrayStringFormating);
-      //   families = lonelies;
+        checking = !checking;
+        console.log(checking);
+        checking ? actions.filterData(formatedFamily, key) : actions.regenData();
 
-      //   regDate = regDate.map(arrayStringFormating);
-      //   regDate = regDate.join(". ");
-      //   sentTo = sentTo.map(arrayStringFormating);
-      //   sentTo = sentTo.join(" ");
-      //   families.splice(2, 0, regDate, sentTo);
 
-      //   setStore({families: families})
-      // },
-
-      familyUniqueValues: () => {
+        // console.log(store.checked);
+      },
+      filterData: (family, key) => {
+        console.log("filterData awakes");
+        const store = getStore(),
+          familyes = family,
+          filtered = store.data.filter((object) => object[familyes] === key);
+        console.log(familyes, key);
+        setStore({ data: filtered });
+      },
+      regenData: () => {
+        console.log("regenData awakes");
         const store = getStore();
+        const data = store.data;
+        setStore({ data: data });
       },
       // ! -- HOOKS -- //
       hooks: {

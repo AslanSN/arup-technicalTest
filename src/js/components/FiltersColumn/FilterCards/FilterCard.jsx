@@ -16,11 +16,10 @@ const FilterCardPropTypes = {
  */
 const FilterCard = (props) => {
   const { store, actions } = useContext(Context);
- 
   const familyName = props.value;
 
   const specificFilterListener = (object, id) => (
-    <SpecificFilter value={object} id={id} />
+    <SpecificFilter value={object} id={id} family={familyName} />
   );
   return (
     <div className="filter-card-container">

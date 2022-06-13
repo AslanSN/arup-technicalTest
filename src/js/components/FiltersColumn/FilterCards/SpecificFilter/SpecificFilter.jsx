@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext} from "react";
 import PropTypes from "prop-types";
 
-import { Tokens } from "../../../../../resources/Tokens.js";
+import { Context } from "../../../../store/appContext.js";
+import { Tokens } from "../../../../Tokens.js";
 import { FilterCheckbox } from "../../StyledFilterColumnComponents/FilterCheckbox";
 import { FilterLabel } from "../../StyledFilterColumnComponents/FilterLabelStyled";
 
 import "./SpecificFilterStyles.scss";
 
 const SpecificFilterPropTypes = {
+  family: PropTypes.string,
   value: PropTypes.array.isRequired,
   id: PropTypes.string.isRequired,
 };
@@ -17,12 +19,15 @@ const SpecificFilterPropTypes = {
  * @returns React Component
  */
 const SpecificFilter = (props) => {
-  console.log(props.value);
+  const { store, actions } = useContext(Context);
+  // console.log(props.value);
+
   const key = props.value[0];
   const value = props.value[1];
-
   return (
-    <div className="specific-filter">
+    <div
+      className="specific-filter"
+      onClick={(event) => actions.usefilterByCheckbox(props.family, key)}>
       <div className="wrapper form-check" key={props.id}>
         <FilterCheckbox
           className="form-check-input"
@@ -39,8 +44,6 @@ const SpecificFilter = (props) => {
         </FilterLabel>
       </div>
       <div className="counters">
-        {/* <div className="bar"></div> */}
-        <ProgressBar animated now={`${key}%`} />
         <FilterLabel color={Tokens.Colors.text.disabled} font-weight="bold">
           {value}
         </FilterLabel>
