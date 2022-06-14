@@ -1,6 +1,9 @@
 import styled from "styled-components";
-import { Tokens } from "../../../../resources/Tokens";
 
+/**
+ * * AslanSN - 22-06-11
+ * @returns Styled Component
+ */
 export const Button = styled.button`
   background: transparent;
 	text-decoration: none;

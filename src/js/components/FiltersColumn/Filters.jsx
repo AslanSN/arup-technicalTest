@@ -6,7 +6,8 @@ import "./FiltersStyles.scss";
 /**
  * ! Father Component - Represents Filters' Column
  * * AslanSN - 22-06-12
- * @returns
+ * Renders af ilter Card for each store.family's key
+ * @returns React component
  */
 const Filters = () => {
   const { store } = useContext(Context);

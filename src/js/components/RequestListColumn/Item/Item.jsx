@@ -3,7 +3,7 @@ import { Context } from "../../../store/appContext";
 import PropTypes from "prop-types";
 
 import "./ItemStyles.scss";
-  
+
 const ItemProptypes = {
   id: PropTypes.number.isRequired,
 };
@@ -11,7 +11,7 @@ const ItemProptypes = {
 /**
  * ! Component - Item for the list from Mail List
  * * AslanSN 22-06-22
- * TODO : FIX - chanceClicked deactivate if other item is selected
+ * TODO : FIX - changeClicked -> deactivate if other item is selected
  * @param {number} props - Id
  * @returns React Component - List item
  */

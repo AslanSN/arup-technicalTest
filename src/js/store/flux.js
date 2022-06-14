@@ -9,6 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         dataDetails: {},
       },
       families: {
+        //TODO: This shouldn't be hardcoded
         "Num.": {},
         Discipline: {},
         "Reg. Date": {},
@@ -18,6 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         Critical: {},
         Message: {},
       },
+      // TODO: Should be added to each family.child to be effective
       checked: false,
     },
     actions: {
@@ -45,7 +47,7 @@ const getState = ({ getStore, getActions, setStore }) => {
        * ! Father catcher & Setter
        * * AslanSN - 22-06-13
        * ? Searchs for types of info calling catchers
-       *
+       * @return Sets the data con store.families
        */
       familiesValuesRepetitions: () => {
         const store = getStore(),
@@ -71,6 +73,7 @@ const getState = ({ getStore, getActions, setStore }) => {
        * * AslanSN 22-06-13
        * Functions to catch the distinct elements
        * and the number of repetitions
+       * ? Each ones uses same algorithm for each family info
        */
       catchers: {
         disciplinesCatcher: (array) => {
@@ -84,7 +87,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           return discipline;
         },
         regDateCatcher: (array) => {
-          // const store = getStore();
           let regDate = {};
           array.forEach((object) => {
             const regDates = object.regDate;
@@ -139,7 +141,7 @@ const getState = ({ getStore, getActions, setStore }) => {
        * ! Data Shortener
        * * AslanSN - 22-06-10
        * ? Shortens disciplines to have 3 or less words
-       * @param {String} string - Discipline
+       * @param {string} string - Discipline
        * @returns string
        */
       disciplineShortener: (string) => {
@@ -209,6 +211,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       //! SORTERS //
+      //TODO: Sorters should be in an actions.child
       /**
        * ! Sorter - Reverse
        * * AslanSN - 22-06-12
@@ -240,6 +243,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       //! FILTERS //
+      //TODO: Filters should be in an actions.child
       /**
        * ! Filter
        * * AslanSN - 22-06-13
@@ -252,7 +256,13 @@ const getState = ({ getStore, getActions, setStore }) => {
           filtered = store.data.filter((object) => object[familyes] === key);
         setStore({ data: filtered });
       },
-
+      /**
+       * ! Switch data conversor
+       * * AslanSN - 22-06-13
+       * ? To make references to data
+       * @param {string} string - family processed name
+       * @returns {string} string - family raw name
+       */
       familiesConverter: (string) => {
         switch (string) {
           case "Num.":
@@ -289,16 +299,16 @@ const getState = ({ getStore, getActions, setStore }) => {
         /**
          * ! HOOK - Collapsible
          * * AslanSN - 22-06-12
+         * ? Sets a
          * TODO: FIXING
          * @param {number} id
          */
         useCollapsible: (id) => {
-          const store = getStore();
-          const numId = store.details.dataDetails.num;
-          const newData = store.data[id];
+          const store = getStore(),
+            numId = store.details.dataDetails.num,
+            newData = store.data[id];
           let selected = store.details.selected;
 
-          //TODO - FIX : data reversed ? numId !== id ALWAYS - Change method
           setStore({
             details: {
               selected:

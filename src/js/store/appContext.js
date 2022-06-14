@@ -3,6 +3,13 @@ import getState from "./flux.js";
 
 export const Context = React.createContext(null);
 
+/**
+ * ! Context injector
+ * * From template
+ * * Edited AslanSN - 22-06-13
+ * @param {React Component} PassedComponent
+ * @returns Wrapper
+ */
 const injectContext = (PassedComponent) => {
   const StoreWrapper = (props) => {
 
@@ -17,9 +24,10 @@ const injectContext = (PassedComponent) => {
           }),
       })
     );
-
+    /**
+     * ! Sets the store before printing components
+     */
     useEffect(() => {
-      //! Set store!
       state.actions.handleData();
       state.actions.familiesValuesRepetitions();
     }, []);

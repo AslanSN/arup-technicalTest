@@ -1,14 +1,20 @@
-import React, { useContext } from 'react';
-import {Context} from "../../../store/appContext.js"
-import './FilterBarStyles.scss'
+import React, { useContext } from "react";
+import { Context } from "../../../store/appContext.js";
+import "./SorterBarStyles.scss";
 
-const FilterBar = () => {
-const { store, actions } = useContext(Context);
+/**
+ * *AslanSN - 22-06-10
+ * Bar that Sorts by type of data
+ * TODO: Sort by each category not only by number!
+ * TODO: Add arrow for each category on action!
+ * @returns react Component
+ */
+const SorterBar = () => {
+  const { actions } = useContext(Context);
   return (
     <ul className="filter-list-container">
-      <li/>
+      <li />
       <li className="filter-list-item ">
-        {/*// TODO: Add arrow */}
         <button
           className="btn filter-list-button"
           onClick={actions.sortByNumber}>
@@ -35,6 +41,6 @@ const { store, actions } = useContext(Context);
       </li>
     </ul>
   );
-}
+};
 
-export default FilterBar;
+export default SorterBar;

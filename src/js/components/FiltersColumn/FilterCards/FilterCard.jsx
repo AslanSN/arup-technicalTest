@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
+
 import { Context } from "../../../store/appContext.js";
+
 import SpecificFilter from "./SpecificFilter/SpecificFilter.jsx";
 
 import "./FilterCardStyles.scss";

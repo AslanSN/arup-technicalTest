@@ -7,7 +7,11 @@ import Filters from "../components/FiltersColumn/Filters.jsx";
 import RequestList from "../components/RequestListColumn/RequestList.jsx";
 
 import "./homeViewStyles.scss";
-
+/**
+ * * AslanSN - 22-06-07
+ * Principal view
+ * @returns React Component
+ */
 const HomeView = () => {
   return (
     <div className="homeView-container">

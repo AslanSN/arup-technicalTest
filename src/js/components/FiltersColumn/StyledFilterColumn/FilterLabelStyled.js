@@ -1,8 +1,9 @@
 import styled from "styled-components";
-// import { Tokens } from "../../../resources/Tokens.js";
-
-// interface
-
+/**
+ * !Styled component
+ * * AslanSN - 22-06-12
+ * Filter - label
+ */
 export const FilterLabel = styled.label`
   background: transparent;
   text-decoration: none;
