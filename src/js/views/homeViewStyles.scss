@@ -1,7 +1,6 @@
-.homeView-container{
-	display: grid;
-	grid-template-areas:
-
-	"filters requests";
-
+.homeView-container {
+  & .body-container {
+    display: grid;
+    grid-template-areas: "filters requests";
+  }
 }

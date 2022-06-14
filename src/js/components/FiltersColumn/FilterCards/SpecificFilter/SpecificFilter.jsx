@@ -2,7 +2,7 @@ import React, { useContext} from "react";
 import PropTypes from "prop-types";
 
 import { Context } from "../../../../store/appContext.js";
-import { Tokens } from "../../../../Tokens.js";
+import { Tokens } from "../../../../resources/Tokens.js";
 import { FilterCheckbox } from "../../StyledFilterColumnComponents/FilterCheckbox";
 import { FilterLabel } from "../../StyledFilterColumnComponents/FilterLabelStyled";
 
@@ -25,10 +25,11 @@ const SpecificFilter = (props) => {
   const key = props.value[0];
   const value = props.value[1];
   return (
-    <div
-      className="specific-filter"
-      onClick={(event) => actions.usefilterByCheckbox(props.family, key)}>
-      <div className="wrapper form-check" key={props.id}>
+    <div className="specific-filter">
+      <div
+        className="wrapper form-check"
+        key={props.id}
+        onClick={(event) => actions.usefilterByCheckbox(props.family, key)}>
         <FilterCheckbox
           className="form-check-input"
           type="checkbox"

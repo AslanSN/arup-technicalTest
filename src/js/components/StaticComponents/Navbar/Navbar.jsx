@@ -30,24 +30,23 @@ const Navbar = () => {
               </a>
             </li>
             <li className="nav-item ms-3 me-3 text-red font-weight-bold">
-              <Link to="/">
-                <Link className="nav-link active" href="#">
+
+                <a className="nav-link active" href="#">
                   RFI
-                </Link>
-              </Link>
+                </a>
             </li>
             <li className="nav-item ms-3 me-3 text-dark font-weight-bold">
-              <Link className="nav-link active" href="#">
+              <a className="nav-link active" href="#">
                 Submittals
-              </Link>
+              </a>
             </li>
             <li className="nav-item ms-3 me-3 text-dark link-dark font-weight-bold ">
-              <Link className="nav-link active" href="#">
+              <a className="nav-link active" href="#">
                 Issues
-              </Link>
+              </a>
             </li>
           </ul>
-          <Link to="www"></Link>
+          <a href="#"></a>
           <a
             href="https://www.arup.com/offices/spain"
             target="_blank"

@@ -34,6 +34,14 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ data: json.reverse() });
       },
       /**
+       * ! data Regenerator
+       * * AslanSN - 22-06-13
+       * @return {array} data - Array of Objects
+       */
+      regenData: () => {
+        setStore({ data: data });
+      },
+      /**
        * ! Father catcher & Setter
        * * AslanSN - 22-06-13
        * ? Searchs for types of info calling catchers
@@ -232,6 +240,19 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       //! FILTERS //
+      /**
+       * ! Filter
+       * * AslanSN - 22-06-13
+       * @param {string} family
+       * @param {string} key
+       */
+      filterData: (family, key) => {
+        const store = getStore(),
+          familyes = family,
+          filtered = store.data.filter((object) => object[familyes] === key);
+        setStore({ data: filtered });
+      },
+
       familiesConverter: (string) => {
         switch (string) {
           case "Num.":
@@ -262,35 +283,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             string;
         }
       },
-      usefilterByCheckbox: (family, key) => {
-        const actions = getActions(),
-          store = getStore(),
-          formatedFamily = actions.familiesConverter(family)
-        let checking = store.checked;
-        console.log(checking);
-        console.log(formatedFamily, key);
 
-        checking = !checking;
-        console.log(checking);
-        checking ? actions.filterData(formatedFamily, key) : actions.regenData();
-
-
-        // console.log(store.checked);
-      },
-      filterData: (family, key) => {
-        console.log("filterData awakes");
-        const store = getStore(),
-          familyes = family,
-          filtered = store.data.filter((object) => object[familyes] === key);
-        console.log(familyes, key);
-        setStore({ data: filtered });
-      },
-      regenData: () => {
-        console.log("regenData awakes");
-        const store = getStore();
-        const data = store.data;
-        setStore({ data: data });
-      },
       // ! -- HOOKS -- //
       hooks: {
         /**
@@ -324,6 +317,24 @@ const getState = ({ getStore, getActions, setStore }) => {
           //TODO - FIX: Window.scrollTo doesn't always work.
           store.details.selected ? window.scrollTo(1000, 150) : null;
         },
+      },
+      /**
+       * ! HOOK - FILTER
+       * * AslanSN - 22-06-13
+       * @param {string} family
+       * @param {string} key
+       */
+      usefilterByCheckbox: (family, key) => {
+        const actions = getActions(),
+          store = getStore(),
+          formatedFamily = actions.familiesConverter(family),
+          checking = !store.checked;
+        // checking = !checking;
+        checking
+          ? actions.filterData(formatedFamily, key)
+          : actions.regenData();
+
+        setStore({ checked: checking });
       },
     },
   };
