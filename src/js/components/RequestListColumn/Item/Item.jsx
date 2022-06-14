@@ -24,7 +24,6 @@ const RequestItem = (props) => {
     shortenedDiscipline = actions.disciplineShortener(item.discipline),
     initialAndSurname = actions.initialsAndSurnameExtractor(item.sentTo.name),
     changeClicked = () => setActive(!active);
-
   return (
     <>
       <li

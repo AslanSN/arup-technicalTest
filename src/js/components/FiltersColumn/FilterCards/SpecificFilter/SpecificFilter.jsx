@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 import { Context } from "../../../../store/appContext.js";
 import { Tokens } from "../../../../resources/Tokens.js";
-import { FilterCheckbox } from "../../StyledFilterColumn/FilterCheckbox";
-import { FilterLabel } from "../../StyledFilterColumn/FilterLabelStyled";
+import { FilterCheckbox } from "../../StyledFilterComponents/FilterCheckboxStyled";
+import { FilterLabel } from "../../StyledFilterComponents/FilterLabelStyled";
 
 import "./SpecificFilterStyles.scss";
 

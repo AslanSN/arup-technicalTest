@@ -54,7 +54,7 @@ const Navbar = () => (
           rel="noopener noreferrer">
           <img
             className="d-flex arup-logo"
-            src="../../../resources/Arup_Red_RGB.png"
+            src="../../../resources/images/arup-red-logo.png"
             alt="Arup logo"
             height="24"
             width="100"

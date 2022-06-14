@@ -58,7 +58,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           subjects = actions.objectSorter(catchers.subjectCatcher(data)),
           status = actions.objectSorter(catchers.statusCatcher(data)),
           criticals = actions.objectSorter(catchers.criticalCatcher(data));
-
         setStore({
           families: {
             Discipline: disciplines,
@@ -83,7 +82,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             if (discipline[disciplines] === discipline[disciplines])
               discipline[disciplines] = discipline[disciplines] + 1 || 1;
           });
-
           return discipline;
         },
         regDateCatcher: (array) => {
@@ -221,7 +219,6 @@ const getState = ({ getStore, getActions, setStore }) => {
        */
       sortByNumber: () => {
         const store = getStore();
-
         setStore({ data: store.data.reverse() });
       },
       /**
@@ -241,7 +238,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }, {});
         return sorted;
       },
-
       //! FILTERS //
       //TODO: Filters should be in an actions.child
       /**
@@ -293,7 +289,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             string;
         }
       },
-
       // ! -- HOOKS -- //
       hooks: {
         /**
@@ -312,6 +307,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({
             details: {
               selected:
+                //TODO: FIX
                 store.data[0].num === 99
                   ? store.data.length - 1 - numId !== id
                     ? (selected = true)

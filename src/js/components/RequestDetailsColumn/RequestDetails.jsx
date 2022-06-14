@@ -10,7 +10,7 @@ import "./RequestDetailsStyles.scss";
  * @param {object} store.details
  * @returns
  */
-const RequestDetails = (props) => {
+const RequestDetails = () => {
   const { store, actions } = useContext(Context);
   const request = store.details.dataDetails;
   const date = new Date(request.regDate);
