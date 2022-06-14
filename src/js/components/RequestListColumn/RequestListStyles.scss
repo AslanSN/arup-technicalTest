@@ -1,0 +1,34 @@
+.request-list-column {
+  display: grid;
+  grid-area: requests;
+  grid-template-areas: "list details";
+  .requests-container {
+    // grid-area: requests;
+    // width: auto;
+    // minimum-width: 50vw;
+    // grid-template:
+    //   "request-bar"
+    //   "filters-bar"
+    //   "items details";
+    // grid-template-columns: auto 25vw;
+    // overflow: visible;
+    // display: grid;
+    // grid-template-areas: "list details";
+    & .request-list-and-filter{
+      grid-area: list;
+    }
+
+    & ul.request-list-listing {
+      // grid-area: items;
+      // display: grid;
+      // grid-template: "items details";
+      // grid-template-columns: auto 25vw;
+      // overflow: hidden;
+      // overflow-y: scroll;
+      & .request-sublist {
+        // overflow: visible;
+        // heigth: 300vh;
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+// !Specific Filter Styles
+.specific-filter{
+	display: inline-flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+		& .wrapper{
+			cursor: pointer;
+		& label{
+			margin: 0 0 0 1rem;
+
+		}}
+}
