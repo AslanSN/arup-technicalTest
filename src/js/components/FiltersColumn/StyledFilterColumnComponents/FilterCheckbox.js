@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Tokens } from "../../../resources/Tokens.js";
+// import { Tokens } from "../../../resources/Tokens.js";
 
 export const FilterCheckbox = styled.input`
   background: transparent;

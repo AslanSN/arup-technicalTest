@@ -1,4 +1,4 @@
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 
 import { Context } from "../../../../store/appContext.js";
@@ -16,14 +16,14 @@ const SpecificFilterPropTypes = {
 /**
  * !Component - Specific Filter
  * * AslanSN - 22-06-12
+ * ? Component deployed for each filter on screen
  * @returns React Component
  */
 const SpecificFilter = (props) => {
-  const { store, actions } = useContext(Context);
-  // console.log(props.value);
+  const { actions } = useContext(Context),
+    key = props.value[0],
+    value = props.value[1];
 
-  const key = props.value[0];
-  const value = props.value[1];
   return (
     <div className="specific-filter">
       <div
