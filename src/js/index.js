@@ -1,12 +1,8 @@
-//import react into the bundle
 import React from "react";
 import ReactDOM from "react-dom";
 
-//include your index.scss file into the bundle
-import "../styles/index.css";
+import "./indexStyles.scss";
 
-//import your own components
-import Layout from "./layout";
+import HomeView from "./views/homeView.jsx";
 
-//render your react application
-ReactDOM.render(<Layout />, document.querySelector("#app"));
+ReactDOM.render(<HomeView />, document.querySelector("#app"));

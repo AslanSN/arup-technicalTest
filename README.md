@@ -1,99 +1,70 @@
-# WebApp boilerplate with React JS
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/react-hello-webapp.git)
+# Arup - AslanSN' Technical Test
 
-<p align="center">
-<a href="https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b"><img src="https://github.com/4GeeksAcademy/react-hello-webapp/blob/master/src/img/how-to.png?raw=true" /></a>
-</p>
+## Instructions
+
+The ADE team of Arup has been commissioned to design, develop, deploy and maintain an application aimed at information management in a construction site in which several companies are involved. The application has been conceived in a modular way, being one of these modules oriented to the exchange of comments or questions between different agents. The preliminary design of this module is as follows:
+
+![mockup 1](./src/js/resources/others/mockup1.PNG)
+
+The view is divided into two main areas, the side panel provides information on the distribution of comments by category (by discipline, by status, etc.), and allows filtering. The second part shows a list of all questions, filtered according to the selection in the side panel, and sorted from most recent to oldest.
+
+Clicking on any of the rows in the table would display a third panel with detailed information:
+
+![mockup 2](./src/js/resources/others/mockup1.PNG)
+
+## My work
+
+Using a `react - flux` template, with `JavaScript` and `SASS` (I know it's not very fancy) I setted up a modular web-app centered in delegations mixing object and function oriented programming. Sometimes I used the **Styled-Components** and **Bootstrap** dependencies even if not consistently, but trying to ensure a fast developing environment.
+
+I applied `SOLID, KISS, camelCase and PascalCase` coding, documenting each function and component to ensure the comprehension of my code, being scrupulous about JavaScript **`good practices`**.
 
 
-### Requirements:
-- Make sure you are using node version 10
+I also thought on the "on-future" development
 
-1. Install the packages:
+As you can see on the structure is divided like so:
+
+### Scheme
+
+- js
+- - index.js & *Styles.scss
+- - **components**
+- - - **FiltersColumn**
+- - - - Filters.jsx & *Styles.scss
+- - - -	FilterCards
+- - - - - FilterCards.jsx & *Styles.scss
+- - - - - SpecificFilter
+- - - - - - SpecificFilter.jsx & *Styles.scss
+- - - - StyledFilterComponents
+- - - - - FilterCardsStyled.js & FilterCheckboxStyled.js & FilterLabelStyled.js
+- - - **RequestDetailsColumn**
+- - - - RequestDetails.jsx & *Styles.scss
+- - - **RequestListColumn**
+- - - - RequestList.jsx & *Styles.scss
+- - - - SorterBar
+- - - - - SoterBar.jsx & *Styles.scss
+- - - - Item
+- - - - - Item.jsx & *Styles.scss
+- - - **StaticComponents**
+- - - - Navbar
+- - - - - Navbar.jsx & *Styles.scss
+- - - - RequestBar
+- - - - - RequestBar.jsx & *Styles.scss
+- - - - Styled
+- - - - - Button.js
+- - **resources** (images and tokens)
+- - **store**
+- - - data (mockData.json -> The data I received)
+- - - **appContext.js & flux.js**
+
+## Conclusion
+I worked a lot to achieve in less than a week the best result, and even if I'm not absolutely happy with it I am proud of my dedication and hard work with it.
+
+### Preview
+[preview](./src/js/resources/others/Captura%20de%20pantalla%202022-06-14%20154016.png)
+
+## How to run
+
+You can use Gitpod or so to deploy it in your web browser or clone it in your computer and if you use:
+```hs
+npm run start
 ```
-$ npm install
-```
-2. Create a .env file:
-```
-$ cp .env.example .env
-```
-3. Start coding! and the webpack dev server with live reload, for windows, mac, linux or Gitpod:
-
-```bash
-$ npm run start
-```
-
-### Styles
-You can update the `styles/index.css` or create new `.css` files inside `styles/` and import them into your current scss or js files depending on your needs.
-
-### Components
-Add more files into your `./src/js/components` or styles folder as you need them and import them into your current files as needed.
-
-**Note (New changes)**: Components have been converted into functions to support the use of hooks:
-* Instead of a class component, we're using a `const` function.
-* Class `constructor` and `state` have been replaced by `useState()` hooks.
-* `componentDidMount()` was replaced by `useEffect({}, [])` - It runs at mount thanks to the second parameter (`[]`).
-* `Actions` and `Store` still work the same way.
-
-```jsx
-// Previous "Class Oriented"
-export class Demo extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this.state = getState('code here');
-	}
-}
-
-// New "Functional Oriented"
-export const Demo = () => (
-	const [state, setState] = getState('code here'); //using the state (if needed)
-  const { store, actions } = useContext(Context); // using the context (if needed)
-
-);
-```
-
-💡Note: There is an example using the Context API inside `views/demo.js`;
-
-### Views (Components)
-Add more files into your `./src/js/views` and import them in `./src/js/layout.jsx`.
-
-### Context
-This boilerplate comes with a centralized general Context API. The file `./src/js/store/flux.js` has a base structure for the store, we encourage you to change it and adapt it to your needs.
-
-React Context [docs](https://reactjs.org/docs/context.html)
-BreathCode Lesson [view](https://content.breatheco.de/lesson/react-hooks-explained)
-
-The `Provider` is already set. You can consume from any component using the useContext hook to get the `store` and `actions` from the Context. Check `/views/demo.js` to see a demo.
-
-```jsx
-import { Context } from "../store/appContext";
-const MyComponentSuper = () => {
-  //here you use useContext to get store and actions
-  const { store, actions } = useContext(Context);
-  return <div>{/* you can use your actions or store inside the html */}</div>
-}
-```
-
-## Publish your website!
-
-1. **Vercel:** The FREE recomended hosting provider is [vercel.com](https://vercel.com/), you can deploy in 1 minutes by typing the following 2 commands:
-
-Login (you need to have an account):
-```sh
-$ npm i vercel -g && vercel login
-```
-Deploy:
-```sh
-$ vercel --prod
-```
-✎ Note: If you don't have an account just go to vercel.com, create a account and come back here.
-
-![Vercel example procedure to deploy](https://github.com/4GeeksAcademy/react-hello-webapp/blob/4b530ba091a981d3916cc6e960e370decaf2e234/docs/deploy.png?raw=true)
-
-2. **Github Pages:** This boilerplate is 100% compatible with the free github pages hosting.
-To publish your website you need to push your code to your github repository and run the following command after:
-```sh
-$ npm run deploy
-```
-Note: You will need to [configure github pages for the branch gh-pages](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#enabling-github-pages-to-publish-your-site-from-master-or-gh-pages)

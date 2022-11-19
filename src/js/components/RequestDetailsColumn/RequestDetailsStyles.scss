@@ -1,0 +1,30 @@
+.request-details-column {
+  width: 25vw;
+  grid-area: details;
+  transition: width;
+  &:active {
+    // width: 25vw;
+  }
+  & .card {
+    margin: auto 2rem auto 2rem;
+    top: 5vh;
+    padding: 2rem;
+    & .header-container {
+      & .importance-container {
+        & .status {
+          margin: 0 1rem 0 0;
+        }
+      }
+    }
+    & .request-core-container {
+      & .name-date {
+        display: inline-flex;
+        width: 100%;
+        justify-content: space-between;
+        & .date {
+          justify-self: end;
+        }
+      }
+    }
+  }
+}
